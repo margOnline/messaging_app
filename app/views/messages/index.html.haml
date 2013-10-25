@@ -1,7 +1,12 @@
-%p
-= form_tag messages_path do
-  =label_tag 'phone', 'Send to'
-  =text_field_tag 'phone'
-  =label_tag 'body'
-  =text_area_tag 'body'
-  %submit 'Send message'
+.form-border
+  .form-container
+    = form_tag messages_path do
+      %p
+        =label_tag 'phone', 'Phone number to send message to'
+        =text_field_tag 'phone'
+      
+      %p
+        =label_tag 'body', 'Message'
+        =text_area_tag 'body'
+      %submit{class: 'button'} 
+        Send message
