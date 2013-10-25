@@ -1,4 +1,4 @@
-This application is written in Ruby 2.0 using the Rails 4.
+This application is written in Ruby 2.0 using Rails 4.
 <h4>Objective</h4>
 To create a simple Rails messaging app using the Twilio API.
 <h4>Requirements</h4>
