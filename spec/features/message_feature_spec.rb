@@ -6,12 +6,12 @@ describe 'messages' do
 
     it 'mobile number field' do
       visit '/'
-      expect(page).to have_field('number')
+      expect(page).to have_field('phone')
     end
 
-    it 'message form' do
+    it 'body field' do
       visit '/'
-      expect(page).to have_field('number')
+      expect(page).to have_field('body')
     end
   end
 

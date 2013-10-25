@@ -1,0 +1,7 @@
+%p
+= form_tag messages_path do
+  =label_tag 'phone', 'Send to'
+  =text_field_tag 'phone'
+  =label_tag 'body'
+  =text_area_tag 'body'
+  %submit 'Send message'
