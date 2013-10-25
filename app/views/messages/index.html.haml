@@ -1,12 +1,20 @@
 .form-border
   .form-container
-    = form_tag messages_path do
+    - if @message.errors.any?
+      .errors
+        %h3
+          = pluralize(@message.errors.count, 'error')
+          prohibited this message from being saved:
+        %ul
+          - @message.errors.full_messages.each do |message|
+            %li
+              = message
+    = form_for Message.new, url: messages_path do |f|
       %p
-        =label_tag 'phone', 'Phone number to send message to'
-        =text_field_tag 'phone'
+        = f.label 'phone', 'Phone number to send message to'
+        = f.text_field 'phone'
       
       %p
-        =label_tag 'body', 'Message'
-        =text_area_tag 'body'
-      %submit{class: 'button'} 
-        Send message
+        = f.label 'body', 'Message'
+        = f.text_area 'body'
+      = f.submit 'Send message', class: 'button'

@@ -1,0 +1,10 @@
+- if object && object.errors.size > 0
+  .form-errors
+    %h3{:class => 'errors'}
+      This message cannot be sent due to 
+      = pluralize(object.errors.size, "error")
+      \:
+    %ul{:class => 'error-text'}
+      - object.errors.full_messages.each do |msg|
+        %li
+          = msg
