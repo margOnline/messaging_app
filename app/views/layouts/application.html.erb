@@ -7,10 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<header> 
+<header>
+  <div id='user-links'>
+  <% if user_signed_in? %> 
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to 'Sign out', destroy_user_session_path, class: 'button' %>
+  <% else %>
+    <%= link_to 'Sign up', new_user_registration_path, class: 'button' %>
+    <%= link_to 'Sign in', user_session_path, class: 'button' %>
+  <% end %>
+</div>
+</header>
   <div class='container'>
+    <% if flash[:notice] %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
     <%= yield %>
   </div>
-</header>
 </body>
 </html>

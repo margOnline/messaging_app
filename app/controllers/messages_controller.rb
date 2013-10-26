@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
 
+  before_filter :authenticate_user!, :except => [:index]
+
   def index
     @message = Message.new
   end
@@ -23,3 +25,5 @@ class MessagesController < ApplicationController
   # end
 
 end
+
+

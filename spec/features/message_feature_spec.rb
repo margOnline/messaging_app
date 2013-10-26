@@ -32,7 +32,7 @@ describe 'messages' do
  
   it 'sends a message' do
     visit '/' 
-    fill_in 'message[phone]', with: '123456789'
+    fill_in 'message[phone]', with: '+447545190929'
     fill_in 'message[body]', with: 'Hello'
     click_button 'Send message'
     expect(page).to have_content 'Message sent'

@@ -9,12 +9,16 @@
           - @message.errors.full_messages.each do |message|
             %li
               = message
-    = form_for Message.new, url: messages_path do |f|
-      %p
-        = f.label 'phone', 'Phone number to send message to'
-        = f.text_field 'phone'
-      
-      %p
-        = f.label 'body', 'Message'
-        = f.text_area 'body'
-      = f.submit 'Send message', class: 'button'
+    - if user_signed_in? 
+      = form_for Message.new, url: messages_path do |f|
+        %p
+          = f.label 'phone', 'Phone number to send message to'
+          = f.text_field 'phone'
+        
+        %p
+          = f.label 'body', 'Message'
+          = f.text_area 'body'
+        = f.submit 'Send message', class: 'button'
+    - else
+      %h3
+        You must be signed in to send a message.

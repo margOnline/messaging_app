@@ -27,7 +27,11 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+#Use twilio to provide sms functionality
 gem 'twilio-ruby'
+
+#Use devise for user authentication
+gem 'devise'
 
 
 group :development, :test do
