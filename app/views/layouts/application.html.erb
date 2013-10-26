@@ -10,7 +10,8 @@
 <header>
   <div id='user-links'>
   <% if user_signed_in? %> 
-    Signed in as <%= current_user.email %>. Not you?
+    Credits: <%= current_user.credits %>
+    <%= link_to 'Buy Credits', { action: 'buy_credits'}, class: 'button' %>
     <%= link_to 'Sign out', destroy_user_session_path, class: 'button' %>
   <% else %>
     <%= link_to 'Sign up', new_user_registration_path, class: 'button' %>

@@ -14,6 +14,33 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
+include Warden::Test::Helpers
+Warden.test_mode!
+
+# Will run the given code as the user passed in
+def as_user(user=nil, &block)
+  current_user = user || FactoryGirl.create(:user)
+  if request.present?
+    sign_in(current_user)
+  else
+    login_as(current_user, :scope => :user)
+  end
+  block.call if block.present?
+  return self
+end
+
+
+def as_visitor(user=nil, &block)
+  current_user = user || FactoryGirl.stub(:user)
+  if request.present?
+    sign_out(current_user)
+  else
+    logout(:user)
+  end
+  block.call if block.present?
+  return self
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -41,4 +68,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  #ensure users are reset for correct functionality
+  config.after(:each) { Warden.test_reset! }
 end

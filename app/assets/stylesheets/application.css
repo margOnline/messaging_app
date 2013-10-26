@@ -69,14 +69,15 @@ header #logo a{
   color:#1B8137;
 }
 header #logo img{
-  margin-top: 40px;
+/*  margin-top: 40px;*/
+  max-width: 20%;
 }
 
 header #user-links {
   flex: 1; /* http://learnlayout.com/flexbox.html */
   -webkit-flex: 1;
   text-align: right; 
-  margin-top: 0; 
+  margin-top: -15px; 
 }
 
 header #user-links > * {
@@ -109,7 +110,7 @@ header #user-links #welcome-message {
   margin: 50px auto;
   padding: 20px;
   border-radius: 8px;
-  background-color:#252525;
+  background-color:#3B3A3D;
 }
 .form-container{
 /*  width:70%;*/

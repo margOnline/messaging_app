@@ -33,6 +33,9 @@ gem 'twilio-ruby'
 #Use devise for user authentication
 gem 'devise'
 
+#Use Stripe checkout to enable the purchase of credits
+gem 'stripe'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
@@ -44,7 +47,6 @@ end
 gem 'database_cleaner'
 gem 'devise'
 gem 'websocket-rails'
-gem 'stripe'
 
 gem 'haml'
 group :doc do
