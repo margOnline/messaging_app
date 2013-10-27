@@ -9,7 +9,7 @@ let(:user) {FactoryGirl.create(:email, :password, :password_confirmation, :no_cr
     end
 
     it 'body field' do
-      visit '/'
+      as_user(user).visit '/'
       expect(page).to have_field('message[body]')
     end
   end
@@ -37,20 +37,26 @@ let(:user) {FactoryGirl.create(:email, :password, :password_confirmation, :no_cr
     expect(page).to have_content 'You must be signed in to send a message.'
   end
 
-  it 'only signed in users can see the form' do
+  it 'displays the number of credits for an authenticated user' do
     as_user(user).visit '/'
-    expect(page).to have_field('message[phone]')
-    expect(page).to have_field('message[body]')
-    expect(page).to have_content 'You must be signed in to send a message.'
+    expect(page).to have_content
   end
 
-  it 'only signed in users can send a message' do
+  it 'displays a purchase credits button to authenticated users' do
     as_user(user).visit '/' 
     fill_in 'message[phone]', with: '+447545190929'
     fill_in 'message[body]', with: 'Hello'
     click_button 'Send message'
     expect(page).to have_content 'Message sent'
   end
+
+  it 'displays messaging form to authenticated users with credits' do
+    as_user(user).visit '/'
+    expect(page).to have_field('message[phone]')
+    expect(page).to have_field('message[body]')
+    expect(page).to have_content 'You must be signed in to send a message.'
+  end
+
 
 end
 
