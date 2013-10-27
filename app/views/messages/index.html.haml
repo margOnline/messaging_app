@@ -1,23 +1,9 @@
 .form-border
   .form-container
     - if @message.errors.any?
-      .errors
-        %h3
-          = pluralize(@message.errors.count, 'error')
-          prohibited this message from being saved:
-        %ul
-          - @message.errors.full_messages.each do |message|
-            %li
-              = message
-    - if current_user.has_credits?
-      = form_for Message.new, url: messages_path do |f|
-        %p
-          = f.label 'phone', 'Phone number to send message to'
-          = f.text_field 'phone'  
-        %p
-          = f.label 'body', 'Message'
-          = f.text_area 'body'
-        = f.submit 'Send message', class: 'button'
+      = render partial: 'shared/error_messages'
+    - if user_signed_in?
+      = render partial: 'form'
     - else
       %h3
         You must be signed in and have credits to send a message.
