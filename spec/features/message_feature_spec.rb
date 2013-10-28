@@ -16,7 +16,7 @@ describe 'messages' do
     fill_in 'user[password]', with: 'secret123'
     fill_in 'user[password_confirmation]', with: 'secret123'
     click_button 'Sign up'
-    expect(user.last.credits).to eq 0
+    expect(User.last.credits).to eq 0
   end
 
   it 'does not allow users with 0 credits to send message' do
