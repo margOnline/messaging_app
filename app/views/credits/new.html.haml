@@ -1,0 +1,10 @@
+= form_tag cart_charges_path do
+  %article
+    %label{class: 'amount'}
+      %span amount: = number_to_currency current_cart.total, unit: '£' 
+
+
+%script{src: "https://checkout.stripe.com/v2/checkout.js", class: "stripe-button", data-key=: "= Rails.configuration.stripe[:publishable_key]", data-description: "A month's subscription", data-amount:= number_to_currency current_cart.total * 100, unit: '£'
+
+%script{:type => "text/javascript",
+        :src  => "javascripts/script_#{2 + 7}"}

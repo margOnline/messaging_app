@@ -1,0 +1,9 @@
+%h3 Buy Credits
+= form_for Message.new, url: messages_path do |f|
+  %p
+    = f.label 'phone', 'Phone number to send message to'
+    = f.text_field 'phone'  
+  %p
+    = f.label 'body', 'Message'
+    = f.text_area 'body'
+  = f.submit 'Send message', class: 'button'

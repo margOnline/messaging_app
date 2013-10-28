@@ -69,6 +69,4 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  #ensure users are reset for correct functionality
-  config.after(:each) { Warden.test_reset! }
 end

@@ -18,9 +18,7 @@ class MessagesController < ApplicationController
     end
   end
 
-  def buy_credits
-    
-  end 
+  
   # rescue Message::SendFailure
   #   flash[:error] = 'Something went wrong'
   #   redirect_to '/'

@@ -1,11 +1,19 @@
 MessagingApp::Application.routes.draw do
-   devise_for :users
+
+  devise_for :users
+  
+  devise_scope :user do
+    get 'users/buy_credits' => 'users#buy_credits', as: :buy_credits
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   resources :messages
+
+  # resources :credits
   # You can have the root of your site routed with "root"
-   root 'messages#index'
+  root 'messages#index'
 
    #devise_for :users, :controllers => { :sessions => "users/sessions" }
   # Example of regular route:
