@@ -9,6 +9,22 @@ describe 'messages' do
     expect(page).to have_content 'You must be signed in and have credits to send a message'
   end
 
+  it 'signs up new users with 0 credits' do
+    visit '/'
+    click_link 'Sign up'
+    fill_in 'user[email]', with: 'mary@gmail.com'
+    fill_in 'user[password]', with: 'secret123'
+    fill_in 'user[password_confirmation]', with: 'secret123'
+    click_button 'Sign up'
+    expect(user.last.credits).to eq 0
+  end
+
+  it 'does not allow users with 0 credits to send message' do
+    user = FactoryGirl.create(:user, :no_credits)
+    visit '/'
+    expect(page).to have_content 'You must be signed in and have credits to send a message'
+  end
+
   context 'with a logged in user' do
 
     before(:each) do
@@ -56,13 +72,6 @@ describe 'messages' do
       it 'displays a purchase credits button to authenticated users' do
         visit '/' 
         expect(page).to have_content 'Buy Credits'
-      end
-
-      xit 'displays messaging form only to authenticated users with credits' do
-        visit '/'
-        expect(page).to have_field('message[phone]')
-        expect(page).to have_field('message[body]')
-        expect(page).to have_content 'You must be signed in and have credits to send a message'
       end
     
     end
