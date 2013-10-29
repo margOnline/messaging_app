@@ -1,9 +1,13 @@
-%h3 Buy Credits
-= form_for Message.new, url: messages_path do |f|
-  %p
-    = f.label 'phone', 'Phone number to send message to'
-    = f.text_field 'phone'  
-  %p
-    = f.label 'body', 'Message'
-    = f.text_area 'body'
-  = f.submit 'Send message', class: 'button'
+.form-container
+  / - if @message.errors.any?
+  /   = render partial: 'shared/error_messages'
+
+  %h3 Buy Credits
+  = form_tag current_user.update_credits, update_credits_path do |f|
+    %p
+      = f.label 'credits', 'Number of credits'
+      = f.text_field 'credits'  
+    %p
+      = f.label 'credit_card', 'Credit card number'
+      = f.text_field 'credit_card'
+    = f.submit 'Buy Credits', class: 'button'

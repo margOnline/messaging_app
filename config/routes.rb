@@ -1,9 +1,10 @@
 MessagingApp::Application.routes.draw do
 
   devise_for :users
-  
+
   devise_scope :user do
     get 'users/buy_credits' => 'users#buy_credits', as: :buy_credits
+    post 'users/update_credits' => 'users#update_credits', as: :update_credits
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

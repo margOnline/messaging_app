@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def has_credits?
-    credits && credits > 0
+    credits > 0
   end
 
 
