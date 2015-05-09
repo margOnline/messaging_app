@@ -20,3 +20,6 @@ app/assets/images/logo.jpeg
 app/assets/images/logo2.jpeg
 app/views/messages/.DS_Store
 .DS_Store
+
+# Ignore config files.
+.env
