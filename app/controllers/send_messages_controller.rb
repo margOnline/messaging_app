@@ -9,7 +9,6 @@ class SendMessagesController < ApplicationController
     twilio_sid = ENV['TWILIO_SID']
     twilio_token = ENV['TWILIO_TOKEN']
     twilio_Phone_number = ENV['TWILIO_PHONE_NUMBER']
-
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
     @twilio_client.account.sms.messages.create(
       :from => "+1#{twilio_phone_number}",
